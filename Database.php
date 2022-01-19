@@ -49,14 +49,13 @@ class Database
     public function createPractice(Practice $practice)
     {
         $statement = $this->pdo->prepare("INSERT INTO practice (practice_name, practice_email, practice_phone, 
-                      practice_education, practice_type, practice_activity, create_date)
-                VALUES (:practice_name, :practice_email, :practice_phone, :practice_education, :practice_type, :practice_activity, :date)");
+                      practice_education, practice_type, create_date)
+                VALUES (:practice_name, :practice_email, :practice_phone, :practice_education, :practice_type, :date)");
         $statement->bindValue(':practice_name', $practice->practice_name);
         $statement->bindValue(':practice_email', $practice->practice_email);
         $statement->bindValue(':practice_phone', $practice->practice_phone);
-        $statement->bindValue(':practice_education', $practice->practice_type);
+        $statement->bindValue(':practice_education', $practice->practice_education);
         $statement->bindValue(':practice_type', $practice->practice_type);
-        $statement->bindValue(':practice_activity', $practice->practice_activity);
         $statement->bindValue(':date', date('Y-m-d H:i:s'));
 
         $statement->execute();

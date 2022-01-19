@@ -13,7 +13,7 @@ class Practice
     public ?string $practice_phone = null;
     public ?string $practice_education = null;
     public ?string $practice_type = null;
-    public ?boolean $practice_activity = null;
+    public ?bool $practice_activity = null;
 
     public function load($data) {
 
