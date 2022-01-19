@@ -24,7 +24,7 @@
 
     <link href="/app.css" rel="stylesheet"/>
 
-    <title>Job Ads</title>
+    <title>Practice</title>
 </head>
 <body>
     <div class="header">
