@@ -14,6 +14,11 @@ class Practice
     public ?string $practice_education = null;
     public ?string $practice_type = null;
     public ?bool $practice_activity = null;
+    public ?float $practice_html = null;
+    public ?float $practice_css = null;
+    public ?float $practice_bootstrap = null;
+    public ?float $practice_php = null;
+    public ?float $practice_mysql = null;
 
     public function load($data) {
 
@@ -24,6 +29,11 @@ class Practice
         $this->practice_education = $data['practice_education'];
         $this->practice_type = $data['practice_type'];
         $this->practice_activity = $data['practice_activity'];
+        $this->practice_html = $data['practice_html'];
+        $this->practice_css = $data['practice_css'];
+        $this->practice_bootstrap = $data['practice_bootstrap'];
+        $this->practice_php = $data['practice_php'];
+        $this->practice_mysql = $data['practice_mysql'];
 
     }
 
