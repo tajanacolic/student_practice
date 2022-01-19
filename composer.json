@@ -1,0 +1,9 @@
+{
+    "name": "cor4/student_practice",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
