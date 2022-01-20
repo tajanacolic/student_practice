@@ -51,11 +51,8 @@ class PracticeController
 
                 if(empty($errors))
                 { 
-                    $_SESSION['activity'] = 'applied';
-                    $_SESSION['applied'] = true;
-                    $router->renderView('practice/practiceview', [
-                        'practice'=> $practice
-                    ]);
+                    setcookie('practice', json_encode($practice), time() + 3600);
+                    header('Location:calendar/insert');
                     exit;
                 }
             }
@@ -64,6 +61,10 @@ class PracticeController
                 'errors' => $errors
             ]);
         }
+    }
+
+    public static function time(Router $router){
+        $router->renderView('calendar/insert',[]);
     }
 
     public static function update(Router $router) {
@@ -158,14 +159,16 @@ class PracticeController
 
         $router->renderView('practice/view',
             ['practice' => $practiceData, 'errors' => $errors]);
-
     }
 
     public static function practiceview(Router $router) 
     {
-
-        $router->renderView('practice/practiceview',[
-            
+        $practiceData = json_decode($_COOKIE['practice'], true);
+        $router->renderView('practice/practiceview', [
+            'practice' => $practiceData
         ]);
     }
 }
+
+
+############################

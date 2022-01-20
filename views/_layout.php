@@ -23,7 +23,6 @@
     <script src="jquery.bpopup-x.x.x.min.js"></script>
 
     <link href="/app.css" rel="stylesheet"/>
-
     <title>Practice</title>
 </head>
 <body>
@@ -66,5 +65,3 @@
     </div>
 </body>
 </html>
-
-################################

@@ -80,10 +80,6 @@ class Practice
 
                 $db->updatePractice($this);
 
-            } else {
-
-                $db->createPractice($this);
-
             }
 
         }
