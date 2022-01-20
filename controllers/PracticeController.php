@@ -40,11 +40,11 @@ class PracticeController
                 $practiceData['practice_phone'] = $_POST['practice_phone'];
                 $practiceData['practice_education'] = $_POST['practice_education'];
                 $practiceData['practice_type'] = $_POST['practice_type'];
-                $practiceData['practice_html'] = $_POST['practice_html'];
-                $practiceData['practice_css'] = $_POST['practice_css'];
-                $practiceData['practice_bootstrap'] = $_POST['practice_bootstrap'];
-                $practiceData['practice_php'] = $_POST['practice_php'];
-                $practiceData['practice_mysql'] = $_POST['practice_mysql'];
+                $practiceData['practice_html'] = (float) $_POST['practice_html'];
+                $practiceData['practice_css'] = (float) $_POST['practice_css'];
+                $practiceData['practice_bootstrap'] = (float) $_POST['practice_bootstrap'];
+                $practiceData['practice_php'] = (float) $_POST['practice_php'];
+                $practiceData['practice_mysql'] = (float) $_POST['practice_mysql'];
 
                 $practice = new Practice();
                 $practice->load($practiceData);
@@ -58,7 +58,7 @@ class PracticeController
                     exit;
                 }
             }
-            $router->renderView('practice',[
+            $router->renderView('practice/formindex',[
                 'practice' => $practiceData,
                 'errors' => $errors
             ]);
@@ -155,7 +155,7 @@ class PracticeController
         ];
         $practiceData = $router->db->getPracticeById($practice_id);
 
-        $router->renderView('jobs/view',
+        $router->renderView('practice/view',
             ['practice' => $practiceData, 'errors' => $errors]);
 
     }
