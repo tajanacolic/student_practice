@@ -1,4 +1,5 @@
 <table>
+
     <tbody>
 
     <tr>
@@ -24,5 +25,6 @@
     <?php } ?>
 
     </tbody>
+
 </table>
 
