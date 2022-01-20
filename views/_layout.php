@@ -12,7 +12,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -27,8 +27,6 @@
     <title>Practice</title>
 </head>
 <body>
-    <div class="header">
-    </div>
     <div id="col-1">
         <ul class="nav flex-column">
             <?php if($_SESSION['applied'] === false): ?>

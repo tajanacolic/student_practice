@@ -1,0 +1,56 @@
+body {
+
+    font-size: 15px;
+    background: #bccad6;
+
+}
+
+th {
+    background-color: #667292;
+    color: #bccad6;
+}
+
+#col-1 {
+
+    position: fixed;
+    overflow-x: hidden;
+    width: 20%;
+    float: left;
+    height: 100%;
+    margin: 0;
+    padding-top: 100px;
+    top: 0;
+    left: 0;
+    background-color: #667292;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 700;
+    color: #bccad6;
+    text-align: left;
+}
+
+#col-2 {
+    position: relative;
+    width: 80%;
+    float: right;
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+li a {
+    display: block;
+    color: #bccad6;
+    padding: 15px 30px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover:not(.active) {
+    background-color: #bccad6;
+    color: #667292;
+}
