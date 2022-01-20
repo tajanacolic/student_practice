@@ -20,8 +20,9 @@ $router->post('/practice/', [PracticeController::class, 'index']);
 $router->get('/practice/index', [PracticeController::class, 'index']);
 $router->post('/practice/index', [PracticeController::class, 'index']);
 $router->get('/practice/practiceview', [PracticeController::class, 'practiceview']);
-$router->get('/practice/view',[PracticeController::class, 'pracview']);
+$router->get('/practice/view', [PracticeController::class, 'view']);
 $router->post('/practice/view/delete', [PracticeController::class, 'delete']);
+$router->post('/practice/view/update', [PracticeController::class, 'update']);
 
 
 $router->get('/practice/signin',[AdminController::class,'signin']);

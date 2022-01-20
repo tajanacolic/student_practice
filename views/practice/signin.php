@@ -6,21 +6,21 @@
     </div>
 <?php endif; ?>
 
-<h1>Please Sign in</h1>
+<h1 class="h1">Please Sign in</h1>
 <form action="" method="post">
 <div>
-    <div><label for="username">Username</label></div>
     <div>
-        <input type="text" id="username" name="username" value="<?php echo $admin['username'] ?>">
+        <input type="text" id="username" name="username" placeholder="Username" value="<?php echo $admin['username'] ?>">
     </div>
 </div>
+    <br>
 <div>
-    <div><label for="password">Password</label></div>
     <div>
-        <input type="password" id="password" name="password" value="<?php echo $admin['password'] ?>">
+        <input type="password" id="password" name="password" placeholder="Password" value="<?php echo $admin['password'] ?>">
     </div>
 </div>
+    <br>
     <div>
-        <button type="submit">Sign in</button>
+        <button type="submit" class="signin">Sign in</button>
     </div>
 </form>
