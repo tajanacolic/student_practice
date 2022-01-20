@@ -39,6 +39,7 @@
 </div>
 <div>
     <div><label for="">Practice type</label></div>
+    <input class="form-check-input" type="radio" checked value="" name="practice_type" hidden id="practice_type10">
     <div class="form-check">
     <input class="form-check-input" type="radio" value="UX Design" name="practice_type" id="practice_type1">
         <label class="form-check-label"  for="flexRadioDefault1">UX Design</label>

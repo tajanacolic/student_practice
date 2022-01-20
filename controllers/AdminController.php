@@ -39,7 +39,9 @@ class AdminController
     }
 
     public static function signout() {
-        $_SESSION['name'] = "user";
+        $_SESSION['name'] = "practice";
         header('Location:/practice');
     }
 }
+
+#################################

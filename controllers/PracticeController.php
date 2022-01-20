@@ -21,11 +21,11 @@ class PracticeController
             $errors = [];
             $practiceData = [
                 'practice_name' => '',
-                'practice_surname' => '',
                 'practice_email' => '',
                 'practice_phone' => '',
                 'practice_education' => '',
                 'practice_type' => '',
+                'practice_activity' => '',
                 'practice_html' => '',
                 'practice_css' => '',
                 'practice_bootstrap' => '',
@@ -35,7 +35,6 @@ class PracticeController
             if($_SERVER['REQUEST_METHOD'] === 'POST')
             {
                 $practiceData['practice_name'] = $_POST['practice_name'];
-                $practiceData['practice_surname'] = $_POST['practice_surname'];
                 $practiceData['practice_email'] = $_POST['practice_email'];
                 $practiceData['practice_phone'] = $_POST['practice_phone'];
                 $practiceData['practice_education'] = $_POST['practice_education'];
@@ -51,10 +50,12 @@ class PracticeController
                 $errors = $practice->save();
 
                 if(empty($errors))
-                {
+                { 
                     $_SESSION['activity'] = 'applied';
                     $_SESSION['applied'] = true;
-                    header('Location:/practice/view');
+                    $router->renderView('practice/practiceview', [
+                        'practice'=> $practice
+                    ]);
                     exit;
                 }
             }
@@ -159,4 +160,14 @@ class PracticeController
             ['practice' => $practiceData, 'errors' => $errors]);
 
     }
+
+    public static function practiceview(Router $router) 
+    {
+
+        $router->renderView('practice/practiceview',[
+            
+        ]);
+    }
 }
+
+############################

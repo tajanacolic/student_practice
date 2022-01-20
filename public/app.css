@@ -54,3 +54,9 @@ li a:hover:not(.active) {
     background-color: #bccad6;
     color: #667292;
 }
+
+.modal, .backdrop {
+    display: block;
+}
+
+/*######################*/

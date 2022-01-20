@@ -27,27 +27,38 @@
     <title>Practice</title>
 </head>
 <body>
+    <?php if($_SESSION['activity'] === 'applied'): 
+        include_once 'practice/modal.php'; 
+        $_SESSION['activity'] = '';
+    endif;    
+    ?>
     <div id="col-1">
         <ul class="nav flex-column">
-            <?php if($_SESSION['applied'] === false): ?>
+            <?php if($_SESSION['name']==='admin'){ ?>
             <li class="nav-item">
-                <a class="menu" href="/practice">Apply for practice</a>
+                <a class="menu" href="/practice/index">Applications</a>
             </li>
-            <?php endif; ?>
-            <?php if($_SESSION['applied'] === true): ?>
             <li class="nav-item">
-                <a class="menu" href="/practice/application">Your application</a>
+                <a class="menu" href="/practice/calendar">Calendar</a>
             </li>
-            <?php endif; ?>
-            <?php if($_SESSION['name']==='admin'): ?>
             <li class="nav-item">
                 <a class="menu" href="/practice/signout">Sign out</a>
             </li>
-            <?php endif; if($_SESSION['name']==='practice'): ?>
+            <?php } else{ 
+                if($_SESSION['applied'] === false){
+            ?>
+            <li class="nav-item">
+                <a class="menu" href="/practice">Apply for practice</a>
+            </li>
+            <?php } else{?>
+            <li class="nav-item">
+                <a class="menu" href="/practice/practiceview">Your application</a>
+            </li>
+            <?php } ?>
             <li class="nav-item">
                 <a class="menu" href="/practice/signin">Sign in</a>
             </li>
-            <?php endif; ?>
+            <?php } ?>
         </ul>
     </div>
     <div class="body" id="col-2">
@@ -55,3 +66,5 @@
     </div>
 </body>
 </html>
+
+################################
