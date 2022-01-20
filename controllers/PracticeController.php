@@ -26,6 +26,11 @@ class PracticeController
                 'practice_phone' => '',
                 'practice_education' => '',
                 'practice_type' => '',
+                'practice_html' => '',
+                'practice_css' => '',
+                'practice_bootstrap' => '',
+                'practice_php' => '',
+                'practice_mysql' => ''
             ];
             if($_SERVER['REQUEST_METHOD'] === 'POST')
             {
@@ -35,6 +40,12 @@ class PracticeController
                 $practiceData['practice_phone'] = $_POST['practice_phone'];
                 $practiceData['practice_education'] = $_POST['practice_education'];
                 $practiceData['practice_type'] = $_POST['practice_type'];
+                $practiceData['practice_html'] = $_POST['practice_html'];
+                $practiceData['practice_css'] = $_POST['practice_css'];
+                $practiceData['practice_bootstrap'] = $_POST['practice_bootstrap'];
+                $practiceData['practice_php'] = $_POST['practice_php'];
+                $practiceData['practice_mysql'] = $_POST['practice_mysql'];
+
                 $practice = new Practice();
                 $practice->load($practiceData);
                 $errors = $practice->save();
@@ -71,82 +82,81 @@ class PracticeController
 
         $errors = [];
 
-        $adData = $router->db->getPracticeById($practice_id);
+        $practiceData = $router->db->getPracticeById($practice_id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $adData['job_title'] = $_POST['job_title'];
-            $adData['job_type'] = $_POST['job_type'];
-            $adData['job_location'] = $_POST['job_location'];
-            $adData['job_requirements'] = $_POST['job_requirements'];
-            $adData['job_description'] = $_POST['job_description'];
-            $adData['job_imageFile'] = $_FILES['job_image'] ?? null;
+            $practiceData['practice_activity'] = (bool) $_POST['practice_activity'];
 
-            $job = new Job();
-            $job->load($adData);
-            $errors = $job->save();
+            $practice = new Practice();
+            $practice->load($practiceData);
+            $errors = $practice->save();
 
             if (empty($errors)) {
 
-                header('Location: /jobs');
+                header('Location: /practice');
                 exit;
 
             }
 
         }
 
-        $router->renderView ('jobs/update', [
-            'job' => $adData,
+        $router->renderView ('practice/view', [
+            'practice' => $practiceData,
             'errors' => $errors
         ]);
 
     }
 
     public static function delete(Router $router) {
-        if($_SESSION['name'] === "user")
+        if($_SESSION['name'] === "practice")
         {
-            header('Location: /jobs');
+            header('Location: /practice');
             exit;
         }
-        $id = $_POST['id'] ?? null;
+        $practice_id = $_POST['practice_id'] ?? null;
 
-        if (!$id) {
+        if (!$practice_id) {
 
-            header('Location: /jobs');
+            header('Location: /practice');
             exit;
 
         }
 
-        $router->db->deleteAd($id);
-        header('Location: /jobs');
+        $router->db->deletePractice($practice_id);
+        header('Location: /practice');
 
     }
 
     public static function view(Router $router) {
 
-        $id = $_GET['id'] ?? null;
+        $practice_id = $_GET['practice_id'] ?? null;
 
-        if (!$id) {
+        if (!$practice_id) {
 
-            header('Location: /jobs');
+            header('Location: /practice');
             exit;
 
         }
 
         $errors = [];
-        $appData = [
-            'job_name' => '',
-            'job_surname' => '',
-            'job_email' => '',
-            'job_tel' => '',
-            'job_id' => '',
-            'job_cvFile' => '',
-            'job_cv' => ''
+        $practiceData = [
+            'practice_name' => '',
+            'practice_surname' => '',
+            'practice_email' => '',
+            'practice_phone' => '',
+            'practice_education' => '',
+            'practice_type' => '',
+            'practice_html' => '',
+            'practice_css' => '',
+            'practice_bootstrap' => '',
+            'practice_php' => '',
+            'practice_mysql' => ''
         ];
-        $adData = $router->db->getAdById($id);
+        $practiceData = $router->db->getPracticeById($practice_id);
 
         $router->renderView('jobs/view',
-            ['job' => $adData, 'errors' => $errors, 'application' =>$appData]);
+            ['practice' => $practiceData, 'errors' => $errors]);
 
     }
 }
