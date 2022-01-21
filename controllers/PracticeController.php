@@ -69,6 +69,17 @@ class PracticeController
     }
 
     public static function time(Router $router){
+        // echo "<pre>";
+        //     var_dump($_POST);
+        // echo "<pre>";
+        // exit;
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            echo "<pre>";
+                var_dump($_POST);
+            echo "<pre>";
+            exit;
+        }
         $router->renderView('calendar/insert',[]);
     }
 
