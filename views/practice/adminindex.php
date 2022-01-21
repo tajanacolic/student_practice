@@ -1,14 +1,16 @@
 <h1 class="h1">Practice applications</h1>
-<form action="" onsubmit="<?php $practice_activity++ ?>">
-    <input type="hidden" name="practice_activity" value="<?php echo $practice_activity ?>">
-    <button class="filterbutton" type="submit">Filter by activity</button>
-</form>
-<br><br>
 <form action="">
-    <input class="search" placeholder="Search by type..." name="search" value="<?php echo $search ?>">
-    <button class="searchbutton" type="submit">Search</button>
+        <input class="search" placeholder="Search by type..." name="search" value="<?php echo $search ?>">
+        <input type="hidden" name="practice_activity" value="<?php echo $practice_activity ?>">
+        <button class="searchbutton" type="submit">Search</button>
 </form>
-<br>
+<form action="" onsubmit="<?php $practice_activity++; ?>">
+        <input type="hidden" name="practice_activity" value="<?php echo $practice_activity ?>">
+        <input class="search" hidden placeholder="Search by type..." name="search" value="<?php echo $search ?>"> 
+        <button class="searchbutton" type="submit">Filter by activity</button>
+</form>
+
+<br><br><br>
 
 <table>
 

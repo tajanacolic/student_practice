@@ -21,9 +21,9 @@ class Database
 
     public function getPractice($search, $practice_activity)
     {
-        if($search && $practice_activity)
+        if($search && $practice_activity === 1)
         {
-            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_type LIKE :practice_type AND practice_activity = 1 ORDER BY create_date DESC');
+            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_type LIKE :practice_type AND practice_activity LIKE 1 ORDER BY create_date DESC');
             $statement->bindValue(':practice_type', "%$search%");
         }
         else if($search)
@@ -31,9 +31,9 @@ class Database
             $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_type LIKE :practice_type ORDER BY create_date DESC');
             $statement->bindValue(':practice_type', "%$search%");
         }
-        else if($practice_activity)
+        else if($practice_activity === 1)
         {
-            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_activity = 1 ORDER BY create_date DESC');
+            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_activity LIKE 1 ORDER BY create_date DESC');
         }
         else
         {
