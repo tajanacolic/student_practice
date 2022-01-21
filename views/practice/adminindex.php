@@ -1,7 +1,7 @@
 <h1 class="h1">Practice applications</h1>
 
 <form action="">
-    <input class="search" placeholder="Search by type..." name="search">
+    <input class="search" placeholder="Search by type..." name="search" value="<?php echo $search ?>">
     <button class="searchbutton" type="submit">Search</button>
     <form method="post" action="">
 

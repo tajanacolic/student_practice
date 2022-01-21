@@ -19,11 +19,18 @@ class Database
         self::$db = $this;
     }
 
-    public function getPractice()
+    public function getPractice($search = '')
     {
-        $statement = $this->pdo->prepare('SELECT * FROM practice ORDER BY create_date ASC');
+        if($search)
+        {
+            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_type LIKE :practice_type ORDER BY create_date DESC');
+            $statement->bindValue(':practice_type', "%$search%");
+        }
+        else
+        {
+            $statement = $this->pdo->prepare('SELECT * FROM practice ORDER BY create_date ASC');
+        }
         $statement->execute();
-
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 

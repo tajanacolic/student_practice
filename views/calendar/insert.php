@@ -35,12 +35,38 @@
           selectOverlap: false,
           expandRows: true,
           events: [
-            { // this object will be "parsed" into an Event Object
-              title: 'The Title', // a property!
-              start: '2022-01-19', // a property!
-              end: '2022-01-21' // a property! ** see important note below about 'end' **
+            { 
+              title: 'Monday', 
+              start: '2022-01-17 08:00', 
+              end: '2022-01-17 16:30'  
+            },
+            { 
+              title: 'Tuesday', 
+              start: '2022-01-18 08:00', 
+              end: '2022-01-18 16:30',  
+            },
+            { 
+              title: 'Wednesday', 
+              start: '2022-01-19 08:00', 
+              end: '2022-01-19 16:30',  
+            },
+            { 
+              title: 'Thursday', 
+              start: '2022-01-20 08:00', 
+              end: '2022-01-20 16:30', 
+            },
+            { 
+              title: 'Friday', 
+              start: '2022-01-21 08:00', 
+              end: '2022-01-21 16:30',
             }
           ],
+          businessHours: {
+            daysOfWeek: [ 1, 2, 3, 4, 5 ],
+            startTime: '08:00',
+            endTime: '16:30', 
+          },
+          eventConstraint: 'businessHours',
            select: function (start, end, allDay) {
                  var title = prompt('Event Title:');
                  if (title) {
