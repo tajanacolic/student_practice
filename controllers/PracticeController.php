@@ -68,11 +68,13 @@ class PracticeController
     }
 
     public static function update(Router $router) {
+
         if($_SESSION['name'] === "practice")
         {
             header('Location: /practice');
             exit;
         }
+
         $practice_id = $_GET['practice_id'] ?? null;
 
         if (!$practice_id) {

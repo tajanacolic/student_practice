@@ -20,20 +20,16 @@
             <td><b><?php echo $i + 1 ?></b></td>
             <td><?php echo $practice['practice_name'] ?></td>
             <td><?php echo $practice['practice_type'] ?></td>
-            <td>
-                <?php if($practice['practice_activity'] === 1) {
+                <?php if($practice['practice_activity'] === 1) { ?>
 
-                    echo 'Active';
+                    <td class="active"><b>Active</b></td>
 
-                } else {
+                <?php } else { ?>
 
-                    echo 'Inactive';
+                    <td class="inactive"><b>Inactive</b></td>
 
-                }
+                <?php } ?>
 
-                ?>
-
-            </td>
             <td>
 
                 <a class="details" href="/practice/view?practice_id=<?php echo $practice['practice_id'] ?>">Details</a>
