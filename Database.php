@@ -23,7 +23,7 @@ class Database
     {
         if($search && $practice_activity)
         {
-            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_type LIKE :practice_type AND practice_activity LIKE 1 ORDER BY create_date DESC');
+            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_type LIKE :practice_type AND practice_activity = 1 ORDER BY create_date DESC');
             $statement->bindValue(':practice_type', "%$search%");
         }
         else if($search)
@@ -33,7 +33,7 @@ class Database
         }
         else if($practice_activity)
         {
-            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_activity LIKE 1 ORDER BY create_date DESC');
+            $statement = $this->pdo->prepare('SELECT * FROM practice WHERE practice_activity = 1 ORDER BY create_date DESC');
         }
         else
         {
