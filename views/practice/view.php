@@ -1,6 +1,6 @@
 <h1 class="h1"><?php echo $practice['practice_name'] ?></h1>
 
-<form action="">
+<form method="post" action="/practice/view?practice_id=<?php echo $practice['practice_id'] ?>">
     <div class="row">
         <div class="col-25">
             <label>Email address:</label>
@@ -98,9 +98,12 @@
             <label class="right"><span id="demo5"></span> %</label>
         </div>
     </div>
+    <br><br>
+    <div class="row">
+        <button class="details" type="submit" style="padding: 15px">Save changes</button>
+    </div>
 </form>
-<br><br>
-
+<br>
 <script>
     var slider = document.getElementById("customRange1");
     var output = document.getElementById("demo");
@@ -150,14 +153,6 @@
 
             <input type="hidden" name="practice_id" value="<?php echo $practice['practice_id'] ?>">
             <button class="details" type="submit" style="padding: 15px">Delete</button>
-
-        </div>
-    </form>
-<br>
-    <form method="post" action="/practice/view/update">
-        <div class="row">
-
-            <button class="details" type="submit" style="padding: 15px">Save changes</button>
 
         </div>
     </form>

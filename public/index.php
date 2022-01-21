@@ -21,9 +21,9 @@ $router->get('/practice/index', [PracticeController::class, 'index']);
 $router->post('/practice/index', [PracticeController::class, 'index']);
 $router->get('/practice/practiceview', [PracticeController::class, 'practiceview']);
 $router->get('/practice/view', [PracticeController::class, 'view']);
+$router->post('/practice/view', [PracticeController::class, 'update']);
 $router->post('/practice/view/delete', [PracticeController::class, 'delete']);
-$router->post('/practice/view/update', [PracticeController::class, 'update']);
-
+$router->get('/calendar/insert', [PracticeController::class, 'time']);
 
 $router->get('/practice/signin',[AdminController::class,'signin']);
 $router->post('/practice/signin',[AdminController::class,'signin']);

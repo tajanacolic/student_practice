@@ -87,11 +87,11 @@ class PracticeController
         $errors = [];
 
         $practiceData = $router->db->getPracticeById($practice_id);
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            $practiceData['practice_activity'] = (bool) $_POST['practice_activity'];
-
+            if($_POST['practice_activity'] === 'on')
+            $practiceData['practice_activity'] = 1;
+            else
+            $practiceData['practice_activity'] = 0;
             $practice = new Practice();
             $practice->load($practiceData);
             $errors = $practice->save();
