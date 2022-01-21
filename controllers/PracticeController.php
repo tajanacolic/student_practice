@@ -11,11 +11,14 @@ class PracticeController
     {
         if($_SESSION['name'] === 'admin')
         {
+            $practice_activity = $_GET['practice_activity'] ?? 0;
+            $practice_activity = $practice_activity % 2;
             $search = $_GET['search'] ?? '';
-            $practices = $router->db->getPractice($search);
+            $practices = $router->db->getPractice($search, $practice_activity);
             $router -> renderView('practice/adminindex',[
                 'practices' => $practices,
-                'search' => $search
+                'search' => $search,
+                'practice_activity' => $practice_activity
             ]);
         }
         else
