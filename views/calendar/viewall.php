@@ -32,7 +32,7 @@
           },
           slotMinTime:'08:00:00',
           slotMaxTime:'16:30:00',
-          selectable: false,
+          selectable: true,
           expandRows: true,
           allDaySlot: false,
           events: <?php print json_encode($data); ?>,
@@ -40,6 +40,12 @@
             daysOfWeek: [ 1, 2, 3, 4, 5 ],
             startTime: '08:00',
             endTime: '16:30', 
+          },
+          eventMouseEnter : function(info) { 
+              
+          },
+          eventMouseLeave: function(info) {
+              
           },
           eventConstraint: 'businessHours',
         });
