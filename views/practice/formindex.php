@@ -51,7 +51,7 @@
     </div>
     <div class="col-25"><label for=""></label></div>
     <div class="col-75">
-        <input class="form-check-input" type="radio" value="Front End Development" name="practice_type" id="practice_type3">
+        <input class="form-check-input" type="radio" value="Frontend Development" name="practice_type" id="practice_type3">
         <label class="form-check-label" for="flexRadioDefault2">Frontend Development</label>
     </div>
     <div class="col-25"><label for=""></label></div>
@@ -61,7 +61,7 @@
     </div>
     <div class="col-25"><label for=""></label></div>
     <div class="col-75">
-        <input class="form-check-input" type="radio" name="practice_type" value="Full Stack Development" id="practice_type5">
+        <input class="form-check-input" type="radio" name="practice_type" value="Fullstack Development" id="practice_type5">
         <label class="form-check-label" for="flexRadioDefault2">Fullstack Development</label>
     </div>
 </div>

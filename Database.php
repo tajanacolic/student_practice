@@ -111,6 +111,16 @@ class Database
         $statement -> execute();
     }
 
+    public function addEventColor($student_id, $color){
+
+        $statement = $this->pdo->prepare("UPDATE calendar SET color = :color WHERE student_id = :student_id");
+        $statement->bindValue(':color', $color);
+        $statement->bindValue(':student_id', $student_id);
+
+        $statement->execute();
+
+    }
+
     public function getEvents()
     {
         $statement = $this -> pdo -> prepare('SELECT * FROM calendar ORDER BY calendar_id DESC');

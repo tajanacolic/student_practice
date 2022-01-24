@@ -14,6 +14,7 @@ foreach($result as $row)
         'id' => $row['calendar_id'],
         'start' => $row['start_event'],
         'end' => $row['end_event'],
-        'title' => $row['title']
+        'title' => $row['title'],
+        'color' => $row['color']
     );
 }
