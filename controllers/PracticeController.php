@@ -82,6 +82,7 @@ class PracticeController
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST')
         {
+            $_SESSION['activity'] = 'applied';
             $_SESSION['calendar'] = 'filled';
             header('Location:/practice/practiceview');
             exit;

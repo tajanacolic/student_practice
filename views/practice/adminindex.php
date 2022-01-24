@@ -4,10 +4,11 @@
         <input type="hidden" name="practice_activity" value="<?php echo $practice_activity ?>">
         <button class="searchbutton" type="submit">Search</button>
 </form>
+<br>
 <form action="" onsubmit="<?php $practice_activity++; ?>">
         <input type="hidden" name="practice_activity" value="<?php echo $practice_activity ?>">
-        <input class="search" hidden placeholder="Search by type..." name="search" value="<?php echo $search ?>"> 
-        <button class="searchbutton" type="submit">Filter by activity</button>
+        <input class="search" hidden placeholder="Search by type..." name="search" value="<?php echo $search ?>">
+        <button class="filterbutton" type="submit">Filter by activity</button>
 </form>
 
 <br><br><br>
@@ -22,6 +23,7 @@
             <th>Name</th>
             <th>Type</th>
             <th>Activity</th>
+            <th></th>
             <th></th>
 
         </tr>
@@ -44,8 +46,13 @@
 
             <td>
 
-                <a class="details" href="/practice/view?practice_id=<?php echo $practice['practice_id'] ?>">Details</a>
                 <a class="details" href="/calendar/view?practice_id=<?php echo $practice['practice_id'] ?>">Calendar</a>
+
+            </td>
+
+            <td>
+
+                <a class="details" href="/practice/view?practice_id=<?php echo $practice['practice_id'] ?>">Details</a>
 
             </td>
 
