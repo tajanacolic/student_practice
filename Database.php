@@ -111,6 +111,13 @@ class Database
         $statement -> execute();
     }
 
+    public function getEvents()
+    {
+        $statement = $this -> pdo -> prepare('SELECT * FROM calendar ORDER BY calendar_id DESC');
+        $statement -> execute();
+        return $statement -> fetchAll();
+    }
+
     public function getEventsbyId($id){
         $statement = $this -> pdo -> prepare('SELECT * FROM calendar WHERE student_id = :id');
         $statement -> bindValue(':id', $id);

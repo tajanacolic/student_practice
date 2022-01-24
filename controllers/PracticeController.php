@@ -132,9 +132,12 @@ class PracticeController
     }
 
     public static function calendarviewall(Router $router) {
-
-
-
+        if($_SESSION['name'] === "practice")
+        {
+            header('Location: /practice');
+            exit;
+        }
+        $router->renderView('calendar/viewall',[]);
     }
 
     public static function update(Router $router) {

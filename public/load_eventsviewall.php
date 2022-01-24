@@ -6,8 +6,7 @@ use app\Router;
 $router = new Router();
 
 $data = array();
-$id = json_decode($_COOKIE['practice_id']);
-$result = $router -> db -> getEventsbyId($id);
+$result = $router -> db -> getEvents();
 
 foreach($result as $row)
 {
