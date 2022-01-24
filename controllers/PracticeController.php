@@ -247,12 +247,14 @@ class PracticeController
             header('Location:/practice');
             exit;
         }
-        $practiceData = json_decode($_COOKIE['practice'], true);
+        if($_SESSION['calendar'] === '')
+        {
+            header('Location:/calendar/insert');
+            exit;
+        }
+        $practiceData = json_decode($_COOKIE['practice'], true) ?? '';
         $router->renderView('practice/practiceview', [
             'practice' => $practiceData
         ]);
     }
 }
-
-
-############################

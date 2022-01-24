@@ -9,6 +9,11 @@ class AdminController
 {
     public static function signin(Router $router)
     {
+        if($_SESSION['applied'] === true && $_SESSION['calendar'] === '')
+        {
+            header('Location:/calendar/insert');
+            exit;
+        }
         if($_SESSION['name'] === 'admin')
         {
             header('Location:/practice');
