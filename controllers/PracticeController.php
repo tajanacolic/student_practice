@@ -131,6 +131,12 @@ class PracticeController
             ['practice' => $practiceData]);
     }
 
+    public static function calendarviewall(Router $router) {
+
+
+
+    }
+
     public static function update(Router $router) {
 
         if($_SESSION['name'] === "practice")

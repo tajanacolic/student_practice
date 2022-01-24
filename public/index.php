@@ -29,6 +29,7 @@ $router->post('/practice/view/delete', [PracticeController::class, 'delete']);
 $router->get('/calendar/insert', [PracticeController::class, 'time']);
 $router->post('/calendar/insert', [PracticeController::class, 'time']);
 $router->get('/calendar/view', [PracticeController::class, 'calendarview']);
+$router->get('/calendar/viewall', [PracticeController::class, 'calendarviewall']);
 $router->get('/practice/signin',[AdminController::class,'signin']);
 $router->post('/practice/signin',[AdminController::class,'signin']);
 $router->get('/practice/signout', [AdminController::class, 'signout']);
