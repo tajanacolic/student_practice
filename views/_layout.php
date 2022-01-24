@@ -40,9 +40,6 @@
                 <a class="menu" href="/practice/index">Applications</a>
             </li>
             <li class="nav-item">
-                <a class="menu" href="/practice/calendar">Calendar</a>
-            </li>
-            <li class="nav-item">
                 <a class="menu" href="/practice/signout">Sign out</a>
             </li>
             <?php } else{ 

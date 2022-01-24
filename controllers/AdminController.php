@@ -9,6 +9,11 @@ class AdminController
 {
     public static function signin(Router $router)
     {
+        if($_SESSION['name'] === 'admin')
+        {
+            header('Location:/practice');
+            exit;
+        }
         $adminData = [
             "username" => '',
             "password" => ''

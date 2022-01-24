@@ -45,6 +45,7 @@
             <td>
 
                 <a class="details" href="/practice/view?practice_id=<?php echo $practice['practice_id'] ?>">Details</a>
+                <a class="details" href="/calendar/view?practice_id=<?php echo $practice['practice_id'] ?>">Calendar</a>
 
             </td>
 

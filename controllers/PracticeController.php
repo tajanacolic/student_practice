@@ -23,6 +23,11 @@ class PracticeController
         }
         else
         {
+            if($_SESSION['applied'] === true)
+            {
+                header('Location:practice/practiceview');
+                exit;
+            }
             $errors = [];
             $practiceData = [
                 'practice_name' => '',
@@ -56,7 +61,8 @@ class PracticeController
 
                 if(empty($errors))
                 { 
-                    setcookie('practice', json_encode($practice), time() + 3600);
+                    setcookie('practice',json_encode($practiceData), time() + 86400);
+                    $_SESSION['applied'] = true;
                     header('Location:calendar/insert');
                     exit;
                 }
@@ -68,19 +74,60 @@ class PracticeController
         }
     }
 
-    public static function time(Router $router){
-        // echo "<pre>";
-        //     var_dump($_POST);
-        // echo "<pre>";
-        // exit;
+    public static function time(Router $router)
+    {
+        if($_SESSION['applied'] === false || $_SESSION['name'] === 'admin' || $_SESSION['calendar'] === 'filled')
+        {
+            header('Location:/practice');
+        }
         if($_SERVER['REQUEST_METHOD'] === 'POST')
         {
-            echo "<pre>";
-                var_dump($_POST);
-            echo "<pre>";
+            $_SESSION['calendar'] = 'filled';
+            header('Location:/practice/practiceview');
             exit;
         }
-        $router->renderView('calendar/insert',[]);
+        $router->renderView('calendar/calendar',[]);
+    }
+
+    public static function calendarview(Router $router)
+    {
+        if($_SESSION['name'] === "practice")
+        {
+            header('Location: /practice');
+            exit;
+        }
+
+        $practice_id = $_GET['practice_id'] ?? null;
+        if (!$practice_id) {
+
+            header('Location: /practice');
+            exit;
+
+        }
+        setcookie('practice_id', json_encode($practice_id), time() + 86400);
+        $_COOKIE['practice_id'] = json_encode($practice_id);
+        
+        $practiceData = [
+            'practice_name' => '',
+            'practice_surname' => '',
+            'practice_email' => '',
+            'practice_phone' => '',
+            'practice_education' => '',
+            'practice_type' => '',
+            'practice_html' => '',
+            'practice_css' => '',
+            'practice_bootstrap' => '',
+            'practice_php' => '',
+            'practice_mysql' => ''
+        ];
+        $practiceData = $router->db->getPracticeById($practice_id);
+        if(!$practiceData)
+        {
+            header('Location: /practice');
+            exit;
+        }
+        $router->renderView('calendar/view',
+            ['practice' => $practiceData]);
     }
 
     public static function update(Router $router) {
@@ -103,6 +150,11 @@ class PracticeController
         $errors = [];
 
         $practiceData = $router->db->getPracticeById($practice_id);
+        if(!$practiceData)
+        {
+            header('Location: /practice');
+            exit;
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if($_POST['practice_activity'] === 'on')
             $practiceData['practice_activity'] = 1;
@@ -149,9 +201,13 @@ class PracticeController
     }
 
     public static function view(Router $router) {
+        if($_SESSION['name'] === "practice")
+        {
+            header('Location: /practice');
+            exit;
+        }
 
         $practice_id = $_GET['practice_id'] ?? null;
-
         if (!$practice_id) {
 
             header('Location: /practice');
@@ -174,13 +230,22 @@ class PracticeController
             'practice_mysql' => ''
         ];
         $practiceData = $router->db->getPracticeById($practice_id);
-
+        if(!$practiceData)
+        {
+            header('Location: /practice');
+            exit;
+        }
         $router->renderView('practice/view',
             ['practice' => $practiceData, 'errors' => $errors]);
     }
 
     public static function practiceview(Router $router) 
     {
+        if($_SESSION['applied'] === false || $_SESSION['name'] === 'admin')
+        {
+            header('Location:/practice');
+            exit;
+        }
         $practiceData = json_decode($_COOKIE['practice'], true);
         $router->renderView('practice/practiceview', [
             'practice' => $practiceData

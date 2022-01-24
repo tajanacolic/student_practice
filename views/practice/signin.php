@@ -16,7 +16,7 @@
     <br>
 <div>
     <div>
-        <input type="password" id="password" name="password" placeholder="Password" value="<?php echo $admin['password'] ?>">
+        <input type="password" id="password" name="password" placeholder="Password">
     </div>
 </div>
     <br>

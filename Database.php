@@ -82,6 +82,8 @@ class Database
         $statement->bindValue(':date', date('Y-m-d H:i:s'));
 
         $statement->execute();
+        
+        return $this->pdo->lastInsertId();
     }
 
     public function deletePractice($practice_id) {
@@ -99,5 +101,37 @@ class Database
         return $statement -> fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function addEvent($start, $end, $id){
+        $statement = $this-> pdo -> prepare("INSERT INTO calendar (start_event, end_event, student_id)
+                                            VALUES (:start, :end, :id)");
+        $statement -> bindValue(':start', $start);
+        $statement -> bindValue(':end', $end);
+        $statement -> bindValue(':id', $id);
+
+        $statement -> execute();
+    }
+
+    public function getEventsbyId($id){
+        $statement = $this -> pdo -> prepare('SELECT * FROM calendar WHERE student_id = :id');
+        $statement -> bindValue(':id', $id);
+        $statement -> execute();
+        return $statement -> fetchAll();
+    }
+
+    public function deleteEvent($id)
+    {
+        $statement = $this->pdo->prepare('DELETE FROM calendar WHERE calendar_id = :calendar_id');
+        $statement->bindValue(':calendar_id', $id);
+        $statement->execute();
+    }
+
+    public function updateEvent($id, $start, $end)
+    {
+        $statement = $this->pdo->prepare('UPDATE calendar SET start_event = :start_event, end_event = :end_event WHERE calendar_id = :calendar_id');
+        $statement->bindValue(':calendar_id', $id);
+        $statement->bindValue(':start_event', $start);
+        $statement->bindValue(':end_event', $end);
+        $statement->execute();
+    }
 
 }

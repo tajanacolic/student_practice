@@ -81,6 +81,10 @@ class Practice
                 $db->updatePractice($this);
 
             }
+            else {
+                $id = $db->createPractice($this);
+                setcookie('practice_id', json_encode($id), time() + 86400);  
+            }
 
         }
         return $errors;
