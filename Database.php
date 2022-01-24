@@ -101,13 +101,13 @@ class Database
         return $statement -> fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addEvent($start, $end, $id){
-        $statement = $this-> pdo -> prepare("INSERT INTO calendar (start_event, end_event, student_id)
-                                            VALUES (:start, :end, :id)");
+    public function addEvent($start, $end, $id, $title){
+        $statement = $this-> pdo -> prepare("INSERT INTO calendar (start_event, end_event, student_id, title)
+                                            VALUES (:start, :end, :id, :title)");
         $statement -> bindValue(':start', $start);
         $statement -> bindValue(':end', $end);
         $statement -> bindValue(':id', $id);
-
+        $statement -> bindValue(':title', $title);
         $statement -> execute();
     }
 

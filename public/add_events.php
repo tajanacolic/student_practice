@@ -9,6 +9,8 @@ $router = new Router();
 
 $start = $_POST['start'];
 $end = $_POST['end'];
+$practiceData = json_decode($_COOKIE['practice'], true);
+$title = $practiceData['practice_name'];
 $id = json_decode($_COOKIE['practice_id']);
 
-$router -> db -> addEvent($start, $end, $id);
+$router -> db -> addEvent($start, $end, $id, $title);
