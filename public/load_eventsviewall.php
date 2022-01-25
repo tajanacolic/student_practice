@@ -9,6 +9,7 @@ $data = array();
 $result = $router -> db -> getEvents();
 foreach($result as $i => $row)
 {
+    $practice = $router->db->getPracticeById($row['student_id']);
     $output = preg_replace('/(\d{4}[\.\/\-][01]\d[\.\/\-][0-3]\d)/', '', $row['start_event']);
     $output1 = preg_replace('/(\d{4}[\.\/\-][01]\d[\.\/\-][0-3]\d)/', '', $row['end_event']);
     $data[] = array(
@@ -17,7 +18,7 @@ foreach($result as $i => $row)
         'end' => $row['end_event'],
         'title' => $row['title'],
         'color' => $row['color'],
-        'description' => $row['title'] ." ". $output ." ". $output1
+        'description' => $row['title'] ." ". $output ." ". $output1 . " " . $practice['practice_type']
     );
 }
 
