@@ -8,6 +8,13 @@
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridWeek',
+        eventLimit: true, // for all non-TimeGrid views
+        views: {
+          timeGrid: {
+            eventLimit: 2 // adjust to 6 only for timeGridWeek/timeGridDay
+          }
+        },
+        eventMaxStack: 2,
         initialDate: '2022-01-24',
         eventDidMount: function(info) {
           var tooltip = new Tooltip(info.el, {
