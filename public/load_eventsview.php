@@ -7,7 +7,7 @@ $router = new Router();
 
 $data = array();
 $id = json_decode($_COOKIE['practice_id']);
-$result = $router -> db -> getEventsbyId($id);
+$result = $router -> db -> getEventsById($id);
 
 foreach($result as $row)
 {

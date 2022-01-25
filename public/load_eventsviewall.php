@@ -15,6 +15,7 @@ foreach($result as $row)
         'start' => $row['start_event'],
         'end' => $row['end_event'],
         'title' => $row['title'],
-        'color' => $row['color']
+        'color' => $row['color'],
+        'description' => $row['title'] . $row['start_event'] . $row['end_event']
     );
 }

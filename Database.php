@@ -137,7 +137,7 @@ class Database
         return $statement -> fetchAll();
     }
 
-    public function getEventsbyId($id){
+    public function getEventsById($id){
         $statement = $this -> pdo -> prepare('SELECT * FROM calendar WHERE student_id = :id');
         $statement -> bindValue(':id', $id);
         $statement -> execute();
