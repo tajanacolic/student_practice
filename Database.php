@@ -116,14 +116,23 @@ class Database
         $statement = $this->pdo->prepare("UPDATE calendar SET color = :color WHERE student_id = :student_id");
         $statement->bindValue(':color', $color);
         $statement->bindValue(':student_id', $student_id);
-
         $statement->execute();
 
     }
 
+    public function activityCalendar(Practice $practice)
+    {
+        $statement = $this->pdo->prepare("UPDATE calendar SET activity = :practice_activity
+                                        WHERE student_id = :practice_id");
+        $statement->bindValue(':practice_activity', $practice->practice_activity);
+        $statement->bindValue(':practice_id', $practice->practice_id);
+
+        $statement->execute();
+    }
+
     public function getEvents()
     {
-        $statement = $this -> pdo -> prepare('SELECT * FROM calendar ORDER BY calendar_id DESC');
+        $statement = $this -> pdo -> prepare('SELECT * FROM calendar WHERE activity LIKE 1 ORDER BY calendar_id DESC');
         $statement -> execute();
         return $statement -> fetchAll();
     }

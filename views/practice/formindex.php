@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-25"><label for="practice_email">Email address:</label></div>
     <div class="col-75">
-        <input type="email" id="practice_email" placeholder="Eg. john@example.com" name="practice_email" value="<?php echo $practice['practice_email'] ?>">
+        <input type="email" id="practice_email" placeholder="Eg. john@example.com" oninvalid="alert('Your email is invalid!');" name="practice_email" value="<?php echo $practice['practice_email'] ?>">
     </div>
 </div>
 <div class="row">

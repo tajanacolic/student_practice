@@ -79,6 +79,7 @@ class Practice
             if ($this->practice_id) {
 
                 $db->updatePractice($this);
+                $db->activityCalendar($this);
 
             }
             else {
