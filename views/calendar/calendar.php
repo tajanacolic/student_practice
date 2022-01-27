@@ -1,3 +1,15 @@
+<?php
+
+  if(isset($_COOKIE['counter']))
+  {
+    if(json_decode($_COOKIE['counter'])>9)
+    {
+      unset($_COOKIE['counter']);
+      setcookie('counter', null, -3600, '/');
+      include_once 'cmodal.php';
+    }
+  }
+?>
 <head>
     <meta charset='utf-8' />
     <link href='/fullcalendar/main.css' rel='stylesheet' />

@@ -7,20 +7,26 @@ use app\Router;
 
 $router = new Router();
 
+
 $start = $_POST['start'];
 $end = $_POST['end'];
 $events = $router -> db -> getEvents();
 $counter = 0;
 foreach($events as $event)
 {
-    if($start === $event['start_event'])
-    $counter ++;
-    else if($start < $event['start_event'] && $event['start_event'] < $end)
-    $counter ++;
-    else if($event['start_event'] < $start && $start < $event['end_event'])
-    $counter ++;
+    $event_start = new DateTime($event['start_event']);
+    $event_end = new DateTime($event['end_event']);
+    $event_start = $event_start->format(DateTime::ATOM);
+    $event_end = $event_end->format(DateTime::ATOM);
+    if($start == $event_start)
+    $counter += 1;
+    else if($start <$event_start && $event_start < $end)
+    $counter += 1;
+    else if($event_start < $start && $start < $event_end)
+    $counter += 1;
 }
-if($counter < 10){
+setcookie('counter', json_encode($counter), time()+3600);
+if($counter < 11){
 $practiceData = json_decode($_COOKIE['practice'], true);
 $title = $practiceData['practice_name'];
 $id = json_decode($_COOKIE['practice_id']);
@@ -31,3 +37,5 @@ $color = '#'.$rand[rand(0,9)].$rand[rand(0,9)].$rand[rand(0,15)].$rand[rand(0,15
 $router -> db -> addEvent($start, $end, $id, $title);
 $router -> db -> addEventColor($id, $color);
 }
+
+header("Refresh:0");
