@@ -3,6 +3,12 @@
     <link href='/fullcalendar/main.css' rel='stylesheet' />
     <script src='/fullcalendar/main.js'></script>
     <script>
+      $(document).ready(function(){
+      $(".zat").click(function(){
+        $(".modal").css("display", "none");
+        $(".backdrop").css("display", "none"); 
+      });
+    });
       document.addEventListener('DOMContentLoaded', function() {  
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -121,14 +127,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">We're sorry</h5>
-        <a class="btn-close" data-bs-dismiss="modal" aria-label="Close" href="/calendar/insert"></a>
+        <button class="btn-close zat" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>We're full at the chosen time!</p>
         <p>Please select another time that suits you. </p>
     </div>
       <div class="modal-footer">
-        <a class="btn btn-secondary button-details" id="modalbtn" data-bs-dismiss="modal" href="/calendar/insert">Close</a>
+        <button class="btn btn-secondary button-details zat" id="modalbtn" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
