@@ -25,7 +25,7 @@ foreach($events as $event)
     else if($event_start < $start && $start < $event_end)
     $counter += 1;
 }
-setcookie('counter', json_encode($counter), time()+3600);
+echo json_encode($counter);
 if($counter < 11){
 $practiceData = json_decode($_COOKIE['practice'], true);
 $title = $practiceData['practice_name'];
@@ -37,5 +37,3 @@ $color = '#'.$rand[rand(0,9)].$rand[rand(0,9)].$rand[rand(0,15)].$rand[rand(0,15
 $router -> db -> addEvent($start, $end, $id, $title);
 $router -> db -> addEventColor($id, $color);
 }
-
-header("Refresh:0");
